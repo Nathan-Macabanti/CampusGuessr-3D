@@ -9,12 +9,16 @@ public class ToggleLargeMap : MonoBehaviour
     [SerializeField] private GameObject submitButton;
     [SerializeField] private AnimationCurve curve; //Used for easing-in and easing-out the animation
     [SerializeField] private TextMeshProUGUI MapStateTextMesh;
+    [SerializeField] private float pivotPosHidden;
     #region private Variables
+    private RectTransform submitBtnTransform;
     private float speed = 0.01f; //Animation Speed
+    private float speed2 = 0.1f; //Animation Speed
     private bool animIsPlaying; //Bool if the animation is playing
     private bool isShowing; //Bool if the map is shown
     private float finalScaleX = 1; //The expected x-scale when the map pops up
     private float finalScaleY = 1; // The expected y-scale when the map pops up 
+    private float finalPosSubBtnY = 0;
     #endregion
 
     private void Start()
@@ -22,9 +26,12 @@ public class ToggleLargeMap : MonoBehaviour
         isShowing = false;
         finalScaleX = map.transform.localScale.x;
         finalScaleY = map.transform.localScale.y;
+        submitBtnTransform = submitButton.GetComponent<RectTransform>();
+        finalPosSubBtnY = submitBtnTransform.pivot.y;
         MapStateTextMesh.text = "Show\nMap";
         map.SetActive(false);
         submitButton.SetActive(false);
+        finalPosSubBtnY = submitBtnTransform.pivot.y;
         //map.SetActive(isShowing);
     }
 
@@ -48,7 +55,7 @@ public class ToggleLargeMap : MonoBehaviour
 #endif
     }
 
-#region Animations
+    #region Animations
     //Pop in variant 1
     //Scale in equally all directions
     IEnumerator PopIn1()
@@ -63,13 +70,13 @@ public class ToggleLargeMap : MonoBehaviour
         while (curScaleX < finalScaleX && curScaleY < finalScaleY)
         {
             time += Time.deltaTime;
-            if(curScaleX < finalScaleX)
+            if (curScaleX < finalScaleX)
             {
                 curScaleX += speed * curve.Evaluate(time);
                 //curScaleX = Mathf.Clamp(curScaleX, 0.0f, finalScaleX);
             }
 
-            if(curScaleY < finalScaleY)
+            if (curScaleY < finalScaleY)
             {
                 curScaleY += speed * curve.Evaluate(time);
                 //curScaleY = Mathf.Clamp(curScaleY, 0.0f, finalScaleY);
@@ -90,10 +97,11 @@ public class ToggleLargeMap : MonoBehaviour
     {
         animIsPlaying = true;
         map.SetActive(true);
-        submitButton.SetActive(true);
+        submitButton.SetActive(false);
         float time = 0.0f;
         float curScaleX = 0.0f;
         float curScaleY = 0.01f;
+        float curPivot = pivotPosHidden;
         map.transform.localScale = new Vector3(0.01f * finalScaleX, map.transform.localScale.y, 0.01f * finalScaleY);
         while (curScaleX < finalScaleX)
         {
@@ -116,10 +124,21 @@ public class ToggleLargeMap : MonoBehaviour
             yield return null;
         }
         map.transform.localScale = new Vector3(finalScaleX, map.transform.localScale.y, finalScaleY);
+        time = 0.0f;
+        submitButton.SetActive(true);
+        while (curPivot <= finalPosSubBtnY)
+        {
+            time += Time.deltaTime;
+            curPivot += speed2 * curve.Evaluate(time);
+            Debug.Log(curPivot);
+            submitBtnTransform.pivot = new Vector2(submitBtnTransform.pivot.x, curPivot);
+            yield return null;
+        }
+
         isShowing = true;
         MapStateTextMesh.text = "Hide\nMap";
         animIsPlaying = false;
-        
+        Debug.Log("Poped In");
     }
 
     //Pop out variant 2
@@ -129,11 +148,23 @@ public class ToggleLargeMap : MonoBehaviour
         //It will not play the animation again while the animation is still playing
         animIsPlaying = true;
         map.SetActive(true);
-        submitButton.SetActive(false);
+        submitButton.SetActive(true);
         float time = 0.0f;
         float curScaleX = finalScaleX;
         float curScaleY = finalScaleY;
+        float curPivot = finalPosSubBtnY;
         map.transform.localScale = new Vector3(finalScaleX, map.transform.localScale.y, finalScaleY);
+
+        while (curPivot > pivotPosHidden)
+        {
+            time += Time.deltaTime;
+            curPivot -= speed2 * curve.Evaluate(time);
+            Debug.Log(curPivot);
+            submitBtnTransform.pivot = new Vector2(submitBtnTransform.pivot.x, curPivot);
+            yield return null;
+        }
+        submitButton.SetActive(false);
+        yield return new WaitForSeconds(0.07f);
         while (curScaleY >= 0.01f)
         {
             time += Time.deltaTime;
@@ -155,13 +186,15 @@ public class ToggleLargeMap : MonoBehaviour
             map.transform.localScale = new Vector3(curScaleX, map.transform.localScale.y, 0.01f * finalScaleY);
             yield return null;
         }
+        map.transform.localScale = new Vector3(finalScaleX, map.transform.localScale.y, finalScaleY);
+        
         //map.transform.localScale = new Vector2(0.01f, 0.01f);
 
         isShowing = false;
         map.SetActive(false);
         MapStateTextMesh.text = "Show\nMap";
         animIsPlaying = false;
-        
+        Debug.Log("Poped Out");
         //It can now play the animation again
     }
 #endregion
