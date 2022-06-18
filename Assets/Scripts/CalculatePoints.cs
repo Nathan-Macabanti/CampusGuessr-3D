@@ -15,7 +15,7 @@ public class CalculatePoints : MonoBehaviour
     public Transform pin;
     public Transform destination;
     //public Text points;
-    float totalPoints; //Total points earned
+    public static float totalPoints; //Total points earned
     public TextMeshProUGUI score;
     
     
@@ -48,15 +48,15 @@ public class CalculatePoints : MonoBehaviour
         //Displays points
         if(PinMap.PinIsSpawned == false)
         {
-            score.text = "0";
+            totalPoints = 0;
         }
         else if(PinDetection.PinIsOnDestination == true)
         {
-            score.text = "" + mapValue;
+            totalPoints = mapValue;
         }
         else
         {
-            score.text = "" + Mathf.RoundToInt(totalPoints);
+            totalPoints = Mathf.RoundToInt(totalPoints);
         }
     }
 
