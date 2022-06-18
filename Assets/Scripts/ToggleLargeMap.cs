@@ -43,6 +43,10 @@ public class ToggleLargeMap : MonoBehaviour
         }
         //isShowing = !isShowing;
         //map.SetActive(isShowing);
+        if(MoveCamera.mapIsOpen == true)
+            MoveCamera.mapIsOpen = false;
+        else if(MoveCamera.mapIsOpen == false)
+            MoveCamera.mapIsOpen = true;
 #if true
         if (!isShowing)
         {
