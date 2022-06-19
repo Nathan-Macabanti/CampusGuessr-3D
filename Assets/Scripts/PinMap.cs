@@ -7,13 +7,17 @@ public class PinMap : MonoBehaviour
     public GameObject pin;
     public static bool PinIsSpawned = false;
     // Update is called once per frame
-
+    void Start()
+    {
+        pin.SetActive(false);
+    }
     void Update()
     {
         if(MoveCamera.mapIsOpen == true)
         {
             if(Input.touchCount > 0)
             {
+                pin.SetActive(true);
                 Touch touch = Input.GetTouch(0);
                 if (touch.phase == TouchPhase.Began)
                 {

@@ -12,17 +12,22 @@ public class OnSubmit : MonoBehaviour
     public GameObject Sphere;
     public static Vector3 newDPos;
     public TextMeshProUGUI score;
-    float newScore;
+    public static float newScore;
     int curr_map; 
-    int max_maps = 2;
+    
 
     //Texture2D newImage;
     Texture2D[] newImages;
     Destination[] newDestination;
+    Destination newD;
 
     void Start() 
     {
+        destination.enabled = false;
         newDestination = Resources.LoadAll<Destination>("Destinations");
+        newD = newDestination[Random.Range(0,newDestination.Length)];
+        newDPos = newD.position;
+
     }
 
     
@@ -40,13 +45,13 @@ public class OnSubmit : MonoBehaviour
         Next.SetActive(false);
         Submit.SetActive(true);
         destination.enabled = false;
-        Destination newD = newDestination[Random.Range(0,newDestination.Length)];
+        newD = newDestination[Random.Range(0,newDestination.Length)];
         Sphere.GetComponent<Renderer>().material.mainTexture = newD.image;
         newDPos = newD.position;
         curr_map++;
         
 
-        if(curr_map == max_maps)
+        if(curr_map == UIMainMenuScreen.numberOfMaps)
         {
             SceneManager.LoadScene("EndScreen", LoadSceneMode.Single);
         }

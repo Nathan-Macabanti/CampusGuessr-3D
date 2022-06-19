@@ -8,7 +8,7 @@ public class UIMainMenuScreen : MonoBehaviour
     [SerializeField] private int MaxNumberOfMaps;
     [SerializeField] private TMPro.TMP_Text NumberOfMapsText;
     
-    private int numberOfMaps = 10;
+    public static int numberOfMaps = 10;
 
     private void Start()
     {

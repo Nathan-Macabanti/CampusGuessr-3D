@@ -527,6 +527,7 @@ MonoBehaviour:
   Submit: {fileID: 2099343750}
   Next: {fileID: 439207942}
   Sphere: {fileID: 638565833}
+  score: {fileID: 0}
 --- !u!114 &439207945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -942,7 +943,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0e415f578cf6cae48a64cee099857a46, type: 2}
+  - {fileID: 2100000, guid: 12e8dafb664f97e479e05521df4b2358, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1593,7 +1594,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167383760}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.182, y: -0.265, z: 0.308}
+  m_LocalPosition: {x: -0.218, y: -0.0037, z: 0.308}
   m_LocalScale: {x: 0.06, y: 0.001, z: 0.06}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1923,6 +1924,7 @@ MonoBehaviour:
   Submit: {fileID: 2099343750}
   Next: {fileID: 439207942}
   Sphere: {fileID: 638565833}
+  score: {fileID: 0}
 --- !u!114 &2099343753
 MonoBehaviour:
   m_ObjectHideFlags: 0

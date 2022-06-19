@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a421b544dae6b3488fa1dc4e15e19e8, type: 3}
-  m_Name: Lake
+  m_Name: Velasco 1
   m_EditorClassIdentifier: 
-  destinationName: Lake
-  position: {x: -0.093, y: -0.027, z: 0.308}
-  image: {fileID: 2800000, guid: 96b2b30e3e831a24984c7536697641da, type: 3}
+  destinationName: Velasco 1
+  position: {x: 0.0046, y: -0.1813, z: 0.308}
+  image: {fileID: 2800000, guid: bdf8d69b6813032428111143859e237b, type: 3}
