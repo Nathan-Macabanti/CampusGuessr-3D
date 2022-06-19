@@ -58,6 +58,7 @@ public class CalculatePoints : MonoBehaviour
         {
             totalPoints = Mathf.RoundToInt(totalPoints);
         }
+
     }
 
     

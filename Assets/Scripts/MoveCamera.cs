@@ -8,7 +8,20 @@ public class MoveCamera : MonoBehaviour
     private Quaternion rotationY;
     private float rotationSpeedModifier = 0.1f;
     public static bool mapIsOpen = false;
+    public static Vector3 newDPos;
+    private void Start() 
+    {
+        
+        Destination[] newDestination = Resources.LoadAll<Destination>("Destinations");
+        Destination newD = newDestination[Random.Range(0,newDestination.Length)];
+        this.GetComponent<Renderer>().material.mainTexture = newD.image;
+        Shader flip = Shader.Find("Flip Normals");
+        this.GetComponent<Renderer>().material.shader = flip;
+        newDPos = newD.position;
 
+        
+
+    }
     // Update is called once per frame
     void Update()
     {

@@ -8,6 +8,6 @@ public class gotoEndScreen : MonoBehaviour
     public void MoveScene()
     {
         // Only specifying the sceneName or sceneBuildIndex will load the Scene with the Single mode
-        SceneManager.LoadScene("LevelScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("MainMenuScene", LoadSceneMode.Single);
     }
 }
