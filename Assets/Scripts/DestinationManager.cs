@@ -6,6 +6,7 @@ public class DestinationManager : MonoBehaviour
 {
     public static bool PinIsOnDestination;
     //Upon collision with another GameObject, this GameObject will reverse direction
+    
    private void OnTriggerStay(Collider other) 
    {
        if(other.gameObject.tag == "Pin Object")
