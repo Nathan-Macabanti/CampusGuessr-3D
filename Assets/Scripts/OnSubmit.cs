@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class OnSubmit : MonoBehaviour
 {
@@ -8,19 +10,25 @@ public class OnSubmit : MonoBehaviour
     public GameObject Submit;
     public GameObject Next;
     public GameObject Sphere;
+    public GameObject pin;
     public static Vector3 newDPos;
+    public TextMeshProUGUI score;
+    public static float newScore;
+    int curr_map; 
+    
 
-    
-    
-    
     //Texture2D newImage;
     Texture2D[] newImages;
     Destination[] newDestination;
+    Destination newD;
 
     void Start() 
     {
-        newImages = Resources.LoadAll<Texture2D>("Images");
+        destination.enabled = false;
         newDestination = Resources.LoadAll<Destination>("Destinations");
+        newD = newDestination[Random.Range(0,newDestination.Length)];
+        newDPos = newD.position;
+
     }
 
     
@@ -29,6 +37,8 @@ public class OnSubmit : MonoBehaviour
         destination.enabled = true;
         Submit.SetActive(false);
         Next.SetActive(true);
+        newScore = newScore + CalculatePoints.totalPoints;
+        score.text = "" + newScore;
     }
 
     public void nextImage()
@@ -36,10 +46,18 @@ public class OnSubmit : MonoBehaviour
         Next.SetActive(false);
         Submit.SetActive(true);
         destination.enabled = false;
-        Texture2D newImage = newImages[Random.Range(0,newImages.Length)];
-        Destination newD = newDestination[Random.Range(0,newDestination.Length)];
+        newD = newDestination[Random.Range(0,newDestination.Length)];
         Sphere.GetComponent<Renderer>().material.mainTexture = newD.image;
         newDPos = newD.position;
+        pin.SetActive(false);
+        curr_map++;
+        
+
+        if(curr_map == UIMainMenuScreen.numberOfMaps)
+        {
+            SceneManager.LoadScene("EndScreen", LoadSceneMode.Single);
+        }
+        
         
     }
 }

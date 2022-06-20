@@ -7,6 +7,5 @@ public class Destination : ScriptableObject
 {
     public string destinationName;
     public Vector3 position;
-
     public Texture2D image;
 }
