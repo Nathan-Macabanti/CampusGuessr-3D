@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a421b544dae6b3488fa1dc4e15e19e8, type: 3}
+  m_Name: Velasco 1
+  m_EditorClassIdentifier: 
+  destinationName: Velasco 1
+  position: {x: 0.0046, y: -0.1813, z: 0.308}
+  image: {fileID: 2800000, guid: bdf8d69b6813032428111143859e237b, type: 3}
