@@ -527,6 +527,7 @@ MonoBehaviour:
   Submit: {fileID: 2099343750}
   Next: {fileID: 439207942}
   Sphere: {fileID: 638565833}
+  pin: {fileID: 2118252955}
   score: {fileID: 0}
 --- !u!114 &439207945
 MonoBehaviour:
@@ -1594,7 +1595,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167383760}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.218, y: -0.0037, z: 0.308}
+  m_LocalPosition: {x: 0.189, y: -0.23, z: 0.308}
   m_LocalScale: {x: 0.06, y: 0.001, z: 0.06}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1924,7 +1925,8 @@ MonoBehaviour:
   Submit: {fileID: 2099343750}
   Next: {fileID: 439207942}
   Sphere: {fileID: 638565833}
-  score: {fileID: 0}
+  pin: {fileID: 2118252955}
+  score: {fileID: 844760160}
 --- !u!114 &2099343753
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class OnSubmit : MonoBehaviour
     public GameObject Submit;
     public GameObject Next;
     public GameObject Sphere;
+    public GameObject pin;
     public static Vector3 newDPos;
     public TextMeshProUGUI score;
     public static float newScore;
@@ -48,6 +49,7 @@ public class OnSubmit : MonoBehaviour
         newD = newDestination[Random.Range(0,newDestination.Length)];
         Sphere.GetComponent<Renderer>().material.mainTexture = newD.image;
         newDPos = newD.position;
+        pin.SetActive(false);
         curr_map++;
         
 

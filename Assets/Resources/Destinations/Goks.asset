@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Goks
   m_EditorClassIdentifier: 
   destinationName: Goks
-  position: {x: 0, y: 0, z: 0}
+  position: {x: 0.189, y: -0.23, z: 0.308}
   image: {fileID: 2800000, guid: ef3710f28a9442a4ca03c75d9621286f, type: 3}
